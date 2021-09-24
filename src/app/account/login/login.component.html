@@ -1,0 +1,25 @@
+<div class="row pt-5 container">
+	<div class="col-md-6 offset-md-3 mt-4">
+		<h3>Login</h3>
+	
+		<form [formGroup]="loginForm" (ngSubmit)="onSubmit()" autocomplete="off">
+			<div class="form-group">
+				<label for="email">Username</label>
+				<input formControlName="email" type="text" name="email"  class="form-control" id="email"
+					   placeholder="Enter username" value="">
+					   <span class="help-block" *ngIf="!loginForm.get('email').valid && loginForm.get('email').touched">Please enter valid Email!</span>
+					  
+			</div>
+			<div class="form-group">
+				<label for="password">Password</label>
+				<input formControlName="password" type="password" name="password"  class="form-control" id="password"
+					   placeholder="Password">
+					   <span class="help-block" *ngIf="!loginForm.get('password').valid && loginForm.get('password').touched">Please enter valid Password!</span>
+			</div>
+			<span class="help-block" *ngIf="!loginForm.valid && loginForm.touched">Please enter valid information!</span>
+			<div>
+				<button type="submit"class="btn btn-primary">Login <i class="fas fa-sign-in-alt"></i></button>
+			</div>
+		</form>
+	</div>
+</div>

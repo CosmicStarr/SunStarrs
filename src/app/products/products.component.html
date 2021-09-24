@@ -1,0 +1,68 @@
+
+<div class="container mt-5 pt-5">
+    <div class="row">
+        <section class="col-3 mt-3">
+            <ng-container>
+            <h5 class="text-warning ml-5 mt-3 mb-3">Sort</h5>
+            <select class="custom-select mb-3">
+  
+       
+            </select>
+              <br>
+              <h5 class="text-warning ml-5">Categories</h5>
+              <ul class="list-group my-3 d-flex">
+                <li class="list-group-item" *ngFor="let item of category">
+                  {{item.name}}
+                </li> 
+              </ul>
+              <br>
+              <h5 class="text-warning ml-5">Car Brands</h5>
+              <ul class="list-group my-3 d-flex">
+                <li class="list-group-item" *ngFor="let item of brands">
+                  {{item.name}}
+                </li> 
+              </ul>
+            </ng-container>
+        </section>
+        <section class="col-9">
+            <div class="d-flex justify-content-between align-items-center pb-2">
+                <div class="form-inline mt-2">
+                    <input  class="form-control" style="width: 300px;" #search placeholder="Search" type="text">
+                    <button class="btn btn-outline-primary mr-2">Search</button>
+                    <button class="btn btn-outline-success ml-2">Reset</button>
+                </div>
+            </div>
+            <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
+                <div class="col-md-4 mb-4" *ngFor="let Prod of products">
+                  <app-cards [product]="Prod">
+                  </app-cards>
+                </div>    
+            </div>
+            <div class="d-flex justify-content-center" *ngIf="p">
+              <pagination 
+              [boundaryLinks]="true" 
+              [totalItems]="p.TotalItems"
+              [itemsPerPage]="p.ItemsPerPage"
+              [(ngModel)]="p.CurrentPage"
+              (pageChanged)="pageChanged($event)"
+              previousText="Back" 
+              nextText="Next" 
+              firstText="First" 
+              lastText="Last">
+              </pagination>
+              <!-- <pagination 
+              [boundaryLinks]="true" 
+              [totalItems]="this.TotalItems"
+              (pageChanged)="pageChanged($event)"
+              [itemsPerPage]="this.shopParams.pageSize"
+              previousText="Back" 
+              nextText="Next" 
+              firstText="First" 
+              lastText="Last">
+              </pagination> -->
+            </div>
+        </section>
+    </div>
+  </div>
+    
+  

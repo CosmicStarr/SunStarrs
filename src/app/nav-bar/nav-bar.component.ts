@@ -1,5 +1,9 @@
 import { Component, OnInit } from '@angular/core';
+import { Observable } from 'rxjs';
 import { AccountService } from '../account/account.service';
+import { IShoppingCart } from '../Models/ShoppingCart';
+import { IUser } from '../Models/User';
+import { ShoppingCartService } from '../_services/shopping-cart.service';
 
 @Component({
   selector: 'app-nav-bar',
@@ -7,10 +11,14 @@ import { AccountService } from '../account/account.service';
   styleUrls: ['./nav-bar.component.scss']
 })
 export class NavBarComponent implements OnInit {
-
-  constructor(public account:AccountService) { }
+  ShoppingCart$:Observable<IShoppingCart>
+  currentUser$:Observable<IUser>
+  showMenu = true
+  constructor(private account:AccountService,private CartService:ShoppingCartService) { }
 
   ngOnInit(): void {
+    this.ShoppingCart$ = this.CartService.ShoppingCart$
+    this.currentUser$ = this.account.currentUser$
   }
 
   isManager():boolean{

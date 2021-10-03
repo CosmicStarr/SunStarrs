@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { AccountService } from './account/account.service';
+import { ShoppingCartService } from './_services/shopping-cart.service';
 
 @Component({
   selector: 'app-root',
@@ -9,18 +10,18 @@ import { AccountService } from './account/account.service';
 export class AppComponent implements OnInit {
   title = 'SunStarrs';
 
-  constructor( private accountService:AccountService){}
+  constructor( private Cart:ShoppingCartService){}
   ngOnInit(): void {
-    // this.loadCurrentUser();
+    const CartId = localStorage.getItem('shoppingCart_Id');
+    if(CartId){
+      this.Cart.getShoppingCart(CartId).subscribe(()=>{
+        console.log('Initialized Shopping Cart! ')
+      },error =>{
+        console.log(error)
+      })
+    }
+   
   }
   
-  // loadCurrentUser(){
-  //   const token = localStorage.getItem('token');
-  //     this.accountService.loadCurrentUser(token).subscribe(()=>{
-  //       console.log('User Loaded');
-  //     },error =>{
-  //       console.log(error);
-        
-  //     }); 
-  // }
+
 }

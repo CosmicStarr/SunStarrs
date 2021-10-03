@@ -1,0 +1,20 @@
+<div class="col-md-12 pt-5 bg-light py-3 px-4 text-uppercase font-weight-bold">
+    Order Summary 
+</div>
+<div class="p-4 col-md-12">
+    <p class="font-italic mb-4"> Shipping & Handling will be added!</p>
+    <ul class="list-unstyled mb-4" *ngIf="(ShoppingCartTotal$| async) as Cart">
+        <li class="justify-content-between d-flex py-3 border-bottom">
+            <strong class="text-muted">Sub-Total</strong>
+            <strong> {{Cart.subTotal|currency}}</strong>
+        </li>
+        <li class="justify-content-between d-flex py-3 border-bottom">
+            <strong class="text-muted">Shipping & Handling</strong>
+            <strong> {{Cart.shipping|currency}}</strong>
+        </li>
+        <li class="justify-content-between d-flex py-3 border-bottom">
+            <strong class="text-muted">Total</strong>
+            <strong> {{Cart.total|currency}}</strong>
+        </li>
+    </ul>
+</div>

@@ -1,11 +1,12 @@
 <div class="row pt-5">
 	<div class="col-md-6 offset-md-3 mt-4">
 		<h1>Register New Employer</h1>
-		<form class="pt-2" [formGroup]="registerForm" (ngSubmit)="onSubmit()">
+		<form class="pt-2" [formGroup]="registerForm" (ngSubmit)="onSubmit()" autocomplete="off">
 			<div class="form-group" >
 				<label for="firstName">First Name</label>
 				<input formControlName="firstName" type="text" name="firstName"  class="form-control"
 					   id="firstName" placeholder="First Name">
+					   <span *ngIf="!registerForm.get('firstName').valid && registerForm.get('firstName').touched">First Name is required!</span>
 			</div>
 			<div class="form-group">
 				<label for="lastName">Last Name</label>
@@ -22,13 +23,12 @@
 				<label for="password">Password</label>
 				<input formControlName="password" type="password" name="password"  class="form-control"
 					   id="password" placeholder="Password">
-					   <span *ngIf="!registerForm.get('password').errors">Passwords words do not match!</span>
+					   <span *ngIf="registerForm.get('password').touched && !registerForm.get('password').errors">Passwords words do not match!</span>
 			</div>
 			<div class="form-group">
 				<label for="confirmPassword">Confirm Password</label>
 				<input formControlName="confirmPassword" type="password" name="confirmPassword"  class="form-control"
-					   id="confirmPassword" placeholder="Confirm Password">
-					  
+					   id="confirmPassword" placeholder="Confirm Password">	  
 			</div>
 			<ng-container *ngIf="isAdmin()">
 				<div class="form-group"  >

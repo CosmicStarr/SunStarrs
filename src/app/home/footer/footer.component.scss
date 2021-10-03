@@ -1,0 +1,45 @@
+footer{
+    background-color: black;
+}
+
+footer h5{
+    color:gold;
+    font-weight: 700;
+    font-size: 1.2rem;
+}
+
+footer li{
+    padding-bottom: 4px;
+}
+
+footer li a{
+    font-size: 0.8rem;
+    color: skyblue;
+}
+footer li a:hover{
+    font-size: 0.8rem;
+    color: gold;
+}
+
+footer p{
+    font-size: 0.8rem;
+    color: skyblue;
+}
+
+.copyright a{
+    color: black;
+    width: 38px;
+    height: 38px;
+    background-color: white;
+    display: inline-block;
+    text-align: center;
+    line-height: 38px;
+    border-radius: 50%;
+    transition: 0.3s ease;
+    margin: 0 5px;
+}
+
+.copyright a:hover{
+    color: white;
+    background-color: gold;
+}

@@ -1,0 +1,81 @@
+//global
+button{
+    color: gold;
+    outline: none;
+    font-weight: 700;
+    font-size: 0.8rem;
+    border: none;
+    background-color: skyblue;
+    padding: 13px 30px;
+    text-transform: uppercase;
+    cursor: pointer;
+    transition: 0.3s ease;
+}
+hr{
+    width: 40px;
+    height: 2px;
+    background-color: goldenrod;
+}
+
+button:hover{
+    background-color: blue;
+}
+
+//product cards
+.products{
+    cursor: pointer;
+    margin-bottom: 2rem;
+    
+}
+
+.starr i{
+    font-size: 0.8rem;
+    color: gold;
+}
+
+.starr i{
+    padding: 13px 0;
+}
+
+.products img{
+    transition: 0.3s all;
+    border-radius: 10px;
+}
+
+.products:hover img{
+    opacity: 0.7;
+    
+}
+
+.products .buy-bt{
+    background:skyblue;
+    transform: translateY(20px);
+    opacity: 0;
+    transition: 0.3s all;
+}
+
+.products:hover .buy-bt{
+   
+    transform: translateY(0);
+    opacity: 1;
+}
+.banner{
+    height: 60vh; width: 100%;
+    background-size: cover;
+    background-position: top 70px center; 
+    background-repeat: no-repeat;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+}
+
+.banner h4{
+    color:gold;
+    font-size: 5rem;
+}
+
+.banner h1{
+    color: white;
+    font-size: 2rem;
+}

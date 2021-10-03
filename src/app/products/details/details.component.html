@@ -7,9 +7,9 @@
                        <div class="img-showcase">
                            <!-- put four imgs here! -->
                            <!-- <img src="{{products.imageUrl}}" alt="{{products.productName}}" style="height: 100%; width: 100%;" class="img-fluid bg-info"> -->
-                           <img src="../assets/images/1625723318_lamborghini-aventador-ultimae-24.webp" alt="">
-                           <img src="../assets/images/1625723318_lamborghini-aventador-ultimae-24.webp" alt="">
-                           <img src="../assets/images/1625723318_lamborghini-aventador-ultimae-24.webp" alt="">
+                           <img src="" alt="">
+                           <img src="" alt="">
+                           <img src="" alt="">
                        </div>
                    </div>
                    <div class="img-select">
@@ -17,29 +17,29 @@
                                when a use clicks, the img will show above! -->
                        <div class="img-item">
                            <a >
-                            <img src="../assets/images/1625723318_lamborghini-aventador-ultimae-24.webp" alt="">
+                            <img src="" alt="">
                            </a>
                        </div>
                        <div class="img-item">
                            <a >
-                            <img src="../assets/images/1625723318_lamborghini-aventador-ultimae-24.webp" alt="">
+                            <img src="" alt="">
                            </a>
                        </div>
                        <div class="img-item">
                            <a >
-                            <img src="../assets/images/1625723318_lamborghini-aventador-ultimae-24.webp" alt="">
+                            <img src="" alt="">
                            </a>
                        </div>
                        <div class="img-item">
                            <a >
-                            <img src="../assets/images/1625723318_lamborghini-aventador-ultimae-24.webp" alt="">
+                            <img src="" alt="">
                            </a>
                        </div>
                    </div>
                </div>
                <!-- right side of the card -->
                <div class="product-content">
-                   <h2 class="product-title">{{products.name}}</h2>
+                   <h2 class="product-title">{{products?.name}}</h2>
                    <!-- <a class="product-link">add a link here optional</a> -->
                    <div class="product-rating">
                        <i class="fa fa-star"></i>
@@ -50,16 +50,16 @@
                        <span>4.7(20)</span>
                    </div>
                    <div class="product-price">
-                       <p class="last-price">Sale Price<span>{{products.price|currency}}</span></p>
-                       <p class="new-price">price<span>{{products.price|currency}}</span></p>
+                       <p class="last-price">Sale Price<span>{{products?.price|currency}}</span></p>
+                       <p class="new-price">price<span>{{products?.price|currency}}</span></p>
                    </div>
                    <div class="product-details">
                        <h2>Description here</h2>
                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolor, porro eum! Placeat culpa quod assumenda obcaecati odio rem dolorem minima.</p>
                        <ul>
                            <li>Color:<span></span></li>
-                           <li *ngIf="products.isAvailable === true">Available:<span>Yes!</span></li>
-                           <li *ngIf="products.isAvailable === false">Available:<span>Coming Soon!</span></li>
+                           <li *ngIf="products?.isAvailable === true">Available:<span>Yes!</span></li>
+                           <li *ngIf="products?.isAvailable === false">Available:<span>Coming Soon!</span></li>
                            <li>Category:<span></span></li>
                            <li>Location:<span></span></li>
                            <li>Free Shipping:<span></span></li>
@@ -72,7 +72,7 @@
                            <span> {{amount}} </span>
                            <i class="fa fa-minus-circle" (click)="decrementAmount()" style="font-size: 1.2rem;"></i>
                        </div>
-                       <button  type="button" class="btn">Add to Cart <i class="fa fa-shopping-cart"></i></button>
+                       <button (click)="addToCart()" type="button" class="btn">Add to Cart <i class="fa fa-shopping-cart"></i></button>
                        <button type="button" class="btn">Compare</button>
                    </div>
                     <div class="social-links">

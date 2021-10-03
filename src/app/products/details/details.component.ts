@@ -3,6 +3,7 @@ import { Component, Input, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { IProducts } from 'src/app/Models/Products';
 import { ProductService } from 'src/app/_services/product.service';
+import { ShoppingCartService } from 'src/app/_services/shopping-cart.service';
 
 @Component({
   selector: 'app-details',
@@ -10,9 +11,9 @@ import { ProductService } from 'src/app/_services/product.service';
   styleUrls: ['./details.component.scss']
 })
 export class DetailsComponent implements OnInit {
-  products?:IProducts
+  @Input() products?:IProducts
   amount = 0
-  constructor(private productService:ProductService, private route:ActivatedRoute) { }
+  constructor(private productService:ProductService, private route:ActivatedRoute, private CartService:ShoppingCartService) { }
 
   ngOnInit(): void {
     this.loadProduct()
@@ -26,6 +27,9 @@ export class DetailsComponent implements OnInit {
     })
   }
 
+  addToCart(){
+    this.CartService.addToCart(this.products,this.amount)
+  }
   incrementAmount(){
     this.amount++
   }

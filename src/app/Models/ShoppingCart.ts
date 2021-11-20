@@ -1,9 +1,8 @@
 import {v4 as uuidv4} from 'uuid';
 
 export interface IShoppingCartItems {
-    productId: number;
-    name: string;
-    imageUrl: string;
+    cartItemsId: number;
+    itemName: string;
     description: string;
     price: number;
     amount: number;
@@ -14,10 +13,10 @@ export interface IShoppingCartItems {
 export interface IShoppingCart {
     shopId: string;
     shoppingCartItems: IShoppingCartItems[];
-    // deliveryId?: number;
-    // deliveryPrice?: number;
-    // clientSecret?: string;
-    // paymentID?: string;
+    deliveryId?: number;
+    deliveryPrice?: number;
+    clientSecret?: string;
+    paymentID?: string;
 }
 
 export class ShoppingCart implements IShoppingCart{

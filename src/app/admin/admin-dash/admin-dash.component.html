@@ -1,0 +1,89 @@
+<div class="container col-sm-4 col-lg-12 col-md-6" style=" background-size: cover; height: 100vh; width: 100%; background: url('../assets/images/bigstockAvacado.jpeg');">
+	<div class="content container">
+		<header>Welcome to <hr>SunStarrs</header>
+		<h3 class="ptag">Create Brand</h3>
+		<form class="action" [formGroup]="productForm" (ngSubmit)="onSubmit()">
+			<div class="field">
+				<span class="fa fa-user"></span>
+				<input formControlName="name" type="text">
+			</div>	
+			<div class="field">
+				<span class="fa fa-user"></span>
+				<input formControlName="description" type="text">
+			</div>	
+			<div class="field">
+				<span class="fa fa-user"></span>
+				<input formControlName="price" type="text">
+			</div>	
+			<div class="field">
+				<span class="fa fa-user"></span>
+				<input formControlName="isOnSale" type="checkbox" id="isOnSale" name="isOnSale" >
+			</div>	
+			<div class="field">
+				<span class="fa fa-user"></span>
+				<input formControlName="isAvailable" type="checkbox" name="isAvailable">
+			</div>
+			<label for="name">Catgory Select</label>
+			<select class="custom-select mb-3" formControlName="categoryDTO" id="categoryDTO">
+				<option value="null">-Please Select a Category-</option>
+				<option *ngFor="let item of category" [value]="item.name">
+				{{item.name}}
+				</option>   
+			  </select>
+			<label for="brand"></label>
+			<select class="custom-select mb-3" formControlName="brandDTO" id="brandDTO">
+			<option value="null">-Please Select a Brand-</option>
+			<option *ngFor="let item of brand"[value]="item.name">
+				{{item.name}}
+				</option>   
+			</select>
+			<!-- <ng-container formArrayName="Form" *ngIf="category || brand">
+				<div [formGroup]="catgoryForm">
+					<label for="name">Catgory Select</label>
+					<select class="custom-select mb-3" formControlName="name" id="name">
+						<option value="null">-Please Select a Category-</option>
+						<option *ngFor="let item of category" [value]="item.catId">
+						{{item.name}}
+						</option>   
+					  </select>
+					<div class="field">
+						<span class="fa fa-user"></span>
+						<input formControlName="description" type="text">
+					</div>
+				</div>
+				<div [formGroup]="brandForm">
+					<label for="brand"></label>
+					<select class="custom-select mb-3" formControlName="name">
+						<option ngValue="null">-Please Select a Brand-</option>
+						<option *ngFor="let item of brand"[ngValue]="item.brandId">
+						{{item.name}}
+						</option>   
+					  </select>
+				</div>
+			</ng-container>	 -->
+			<div class="Login">
+				<button class="btn btn-primary form-control">submit</button>
+			</div>
+		</form>
+		<hr>
+	</div>
+</div>
+{{productForm.value | json}}
+
+
+<!-- <form [formGroup]="catgoryForm" (ngSubmit)="postCat()" class="mt-5">
+	<select class="custom-select mb-3" formControlName="name" id="name" name="name" value="name">
+		<option *ngFor="let item of category"
+		[value]="item.name">
+		{{item.name}}
+		</option>   
+	  </select>
+	  <div class="field">
+		<span class="fa fa-user"></span>
+		<input formControlName="description" type="text">
+	</div>
+	<div class="Login">
+		<button class="btn btn-primary form-control">submit</button>
+	</div>
+</form> -->
+

@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -18,6 +18,15 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { HomeFeaturesComponent } from './home/home-features/home-features.component';
 import { FooterComponent } from './home/footer/footer.component';
 import { SearchComponent } from './search/search.component';
+import { CheckoutComponent } from './checkout/checkout.component';
+import { Ng2SearchPipeModule } from 'ng2-search-filter';
+import { ErrorComponent } from './error/error.component';
+import { ServerErrorComponent } from './server-error/server-error.component';
+import { NotfoundComponent } from './notfound/notfound.component';
+import { AuthInterceptorProvider } from './Interceptor/jwt.interceptor';
+import { ErrorInterceptorProvider } from './Interceptor/error.interceptor';
+
+
 
 @NgModule({
   declarations: [
@@ -32,6 +41,10 @@ import { SearchComponent } from './search/search.component';
     HomeFeaturesComponent,
     FooterComponent,
     SearchComponent,
+    CheckoutComponent,
+    ErrorComponent,
+    ServerErrorComponent,
+    NotfoundComponent,
 
   ],
   imports: [
@@ -43,10 +56,13 @@ import { SearchComponent } from './search/search.component';
     FormsModule,
     ReactiveFormsModule,
     PaginationModule,
-    NgbModule
-    
+    NgbModule,
+    Ng2SearchPipeModule
   ],
-  providers: [],
+  providers: [
+    AuthInterceptorProvider,
+    ErrorInterceptorProvider
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

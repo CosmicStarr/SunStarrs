@@ -19,6 +19,7 @@ export class ConfirmEmailComponent implements OnInit {
   }
 
   getParams(){
+    //I have to check for null values
     this.params.token = this.route.snapshot.queryParamMap.get('token')
     this.params.userId = this.route.snapshot.queryParamMap.get('userId')
   }

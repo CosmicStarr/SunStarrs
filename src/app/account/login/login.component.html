@@ -1,24 +1,27 @@
 
-<div class="container-fluid" style="height: 100vh; width: 100%; background: url('../assets/images/bigstockAvacado.jpeg');">
+<div class="container-fluid col-sm-4 col-lg-12 col-md-6" style=" background-size: cover; height: 100vh; width: 100%; background: url('../assets/images/bigstockAvacado.jpeg');">
 	<div class="content">
-		<header>Welcome to SunStarrs</header>
+		<header>Welcome to <hr>SunStarrs</header>
 		<h3 class="ptag">where your meals come true!</h3>
-		<form class="action">
+		<form class="action" [formGroup]="loginForm" (ngSubmit)="onSubmit()">
 			<div class="field">
 				<span class="fa fa-user"></span>
-				<input type="text" placeholder="Email">
+				<input formControlName="email" type="text" placeholder="Email">
+				<span class="loge" *ngIf="loginForm.get('email').errors && loginForm.get('email').touched">Email is required!</span>
 			</div>
 			<div class="field space">
 				<span class="fa fa-lock"></span>
-				<input type="password" placeholder="Password">
+				<input formControlName="password" type="password" placeholder="Password">
+				<span class="logp" *ngIf="!loginForm.get('password').valid && loginForm.get('password').touched">Password is required!</span>
 			</div>
 			<div class="pass">
-				<a href="">Forgot Password</a>
+				<a routerLink="/account/forgot-password">Forgot Password</a>
 			</div>
 			<div class="Login">
-				<button class="btn btn-primary form-control">Login</button>
+				<button  class="btn btn-primary form-control">Login</button>
 			</div>
 		</form>
 	</div>
 </div>
+
 

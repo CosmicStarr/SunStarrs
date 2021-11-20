@@ -27,6 +27,7 @@
     "font-awesome": "^4.7.0",
     "install": "^0.13.0",
     "jquery": "^3.6.0",
+    "ng2-search-filter": "^0.5.1",
     "ngx-bootstrap": "^7.1.0",
     "npm": "^7.24.0",
     "popper.js": "^1.16.1",

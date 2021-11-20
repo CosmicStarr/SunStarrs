@@ -1,0 +1,93 @@
+.registerBody{
+    margin-top: 150px;
+}
+
+.register-formL{
+    text-align: center;
+    margin-top: 200px;
+    padding: 60px;
+    color: gold;
+ 
+}
+.register-formL h1{
+    font-size: 100px;
+    margin-bottom: 50px;
+    color: gold;
+    text-shadow: .1rem .1rem .8rem black;
+    text-transform: uppercase;
+    font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+}
+
+.register-formL h3{
+    font-size: 20px;
+    margin-bottom: 50px;
+    padding: 20px 20px 0;
+    text-shadow: .1rem .1rem .8rem black;
+    text-transform: uppercase;
+    font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+}
+
+.register-formL button{
+    border-radius: 1.2rem;
+    border: none;
+    font-weight: 600;
+    background: gold;
+    width: 220px;
+    color: #555;
+    padding: 10px;
+}
+
+.register-formL button:hover{
+    background-color: skyblue;
+}
+
+.register-form{
+    padding: 30px;
+    width: 600px;
+}
+
+.register-formR{
+    border: none;
+    padding: 50px 20px 20px 20px;
+    border-radius: 10px;
+    background:rgba(255,255,0,0.4); 
+    box-shadow: -1px 4px 28px 0px rgba(0,0,0,0.7);
+}
+.register-formR label{
+    color: gold;
+    text-transform: uppercase;
+    text-shadow: .1rem .1rem .8rem black;
+    font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif; 
+}
+
+.register-formR input{
+    font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif; 
+}
+.register-formR span{
+    color: red;
+    text-shadow: .1rem .1rem .8rem black;
+}
+.register-formR h1{
+    color: gold;
+    text-align: center;
+    text-shadow: .1rem .1rem .8rem black;
+    text-transform: uppercase;
+    font-size: 50px;
+    margin: 10px 0 35px 0;
+    font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+}
+
+.register-formR button{
+    border-radius: 1.2rem;
+    border: none;
+    margin-top: 20px;
+    font-weight: 600;
+    background: gold;
+    color: #555;
+    font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+}
+
+.register-formR button:hover{
+    background-color: skyblue;
+}
+

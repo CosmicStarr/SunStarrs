@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { Observable } from 'rxjs';
 import { AccountService } from '../account/account.service';
 import { IShoppingCart } from '../Models/ShoppingCart';
@@ -14,19 +15,17 @@ export class NavBarComponent implements OnInit {
   ShoppingCart$:Observable<IShoppingCart>
   currentUser$:Observable<IUser>
   showMenu = true
-  constructor(private account:AccountService,private CartService:ShoppingCartService) { }
+  constructor(private account:AccountService,private CartService:ShoppingCartService,private route:Router) { }
 
   ngOnInit(): void {
     this.ShoppingCart$ = this.CartService.ShoppingCart$
     this.currentUser$ = this.account.currentUser$
   }
 
-  isManager():boolean{
-    return this.account.user.role === 'Manager'? true : false;
+  logOut(){
+    this.account.logOut()
+    this.route.navigateByUrl('/')
   }
 
-  isAdmin():boolean{
-    return this.account.user.role === 'Admin'? true : false;
-  }
 
 }

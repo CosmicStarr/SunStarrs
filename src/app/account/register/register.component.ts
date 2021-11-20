@@ -1,7 +1,9 @@
 import { NgSwitch } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { Observable } from 'rxjs';
 import { IRegister } from 'src/app/Models/Register';
+import { IUser } from 'src/app/Models/User';
 
 import { AccountService } from '../account.service';
 
@@ -11,10 +13,10 @@ import { AccountService } from '../account.service';
   styleUrls: ['./register.component.scss']
 })
 export class RegisterComponent implements OnInit {
+  currentUser$:Observable<IUser>
   registerForm:FormGroup
   roleOptions: string[] = ['Admin', 'Manager'];
   developerType: string[] = ['Developer', 'Designer'];
-
   register:any = {
     email: '',
     firstName:'',
@@ -26,26 +28,22 @@ export class RegisterComponent implements OnInit {
   }
 
   constructor(public accountService:AccountService) { }
-
+  
   ngOnInit(): void {
+    this.currentUser$ = this.accountService.currentUser$
     this.createForm()
+
   }
   onSubmit(){
     this.accountService.register(this.registerForm.value).subscribe(()=>{
       //routing logic here
-      console.log('user register')
+      console.log(this.registerForm.value)
     },error =>{
       console.log(error)
     })
   }
 
-  isManager():boolean{
-    return this.accountService.user.role === 'Manager'? true : false;
-  }
 
-  isAdmin():boolean{
-    return this.accountService.user.role === 'Admin'? true : false;
-  }
 
   roleChange(value: any) {
     this.register.role = value;
@@ -57,7 +55,7 @@ export class RegisterComponent implements OnInit {
 
   createForm(){
     this.registerForm = new FormGroup({
-      email:new FormControl('',[Validators.required,Validators.email]),
+      email:new FormControl('',[Validators.required,Validators.email,Validators.pattern('^[\\w-\\.]+@([\\w-]+\\.)+[\\w-]{2,4}$')]),
       password:new FormControl('',Validators.required),
       firstName:new FormControl('',Validators.required),
       lastName:new FormControl('',Validators.required),

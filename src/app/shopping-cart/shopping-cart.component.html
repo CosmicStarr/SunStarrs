@@ -1,12 +1,12 @@
-<div *ngIf="(ShoppingCart$|async) === null" class="pt-5" class="container">
+<div *ngIf="(ShoppingCart$|async) === null" class="pt-5 mt-5" class="container">
     <h1 class="pt-5">You dont have any items in your Shopping Cart!</h1>
 </div>
 
-<ng-container *ngIf="(ShoppingCart$|async) as Cart">
-    <div class="product-cart container">
+<ng-container *ngIf="(ShoppingCart$|async) as Cart" >
+    <div class="product-cart container mt-5 py-5">
         <div class="cart-collection container">
             <div class="cart-header">
-                <p>Item</p>
+                <p>Items</p>
                 <p>Amount</p>
                 <p>price</p>
                 <p>Total</p>
@@ -14,11 +14,13 @@
             </div>
         <div class="wrapper">
             <h4 class="banner">Cart</h4> 
-            <ng-container *ngFor="let item of Cart?.shoppingCartItems">
+            <ng-container *ngFor="let item of Cart.shoppingCartItems">
                 <div class="cart-items">
                     <form class="action">
                         <div class="cart-product">
-                            <div class="cart-image"></div>
+                            <div class="cart-image">
+                                <img src="{{item.imageUrl}}" style="height: 100%; width: 100%;" class="img-fluid bg-info">
+                            </div>
                             <div class="cart-product-info">
                                 <h3 class="product-name">Name: {{item?.itemName}}</h3>
                                 <div class="cart-price">Price: {{item?.price}}</div>
@@ -69,7 +71,7 @@
                         class="form-check-input"
                         name="deli">
                         <label class="form-check-label" for="{{item.deliveryId}}">
-                            <strong>{{item.deliName}} - {{item.price|currency}}</strong>
+                            <strong>{{item.name}} - {{item.price|currency}}</strong>
                             <br>
                             <span class="text-center"> {{item.description}}</span>
                         </label>
@@ -80,13 +82,13 @@
         <hr class="my-3">
         <div class="cart-total-hold" *ngIf="(ShoppingCart$|async)">
             <div class="cart-total">
-                <p>Total:</p>
-                <p>$</p>
+     
             </div>
             <app-order-summary></app-order-summary>
             <div class="cart-action-button">
                 <a routerLink="/products">Continue Shopping</a>
-                <a routerLink="/checkout" (click)="createPayment()">Proceed to Checkout</a>
+                <!-- Add a create payment function here! -->
+                <a routerLink="/checkout" (click)="paymentIntent()">Proceed to Checkout</a>
             </div>
         </div>
     </div>

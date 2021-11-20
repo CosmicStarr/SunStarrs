@@ -1,57 +1,73 @@
-<div class="row pt-5">
-	<div class="col-md-6 offset-md-3 mt-4">
-		<h1>Register New Employer</h1>
-		<form class="pt-2" [formGroup]="registerForm" (ngSubmit)="onSubmit()" autocomplete="off">
-			<div class="form-group" >
-				<label for="firstName">First Name</label>
-				<input formControlName="firstName" type="text" name="firstName"  class="form-control"
-					   id="firstName" placeholder="First Name">
-					   <span *ngIf="!registerForm.get('firstName').valid && registerForm.get('firstName').touched">First Name is required!</span>
-			</div>
-			<div class="form-group">
-				<label for="lastName">Last Name</label>
-				<input formControlName="lastName" type="text" name="lastName"  class="form-control"
-					   id="lastName" placeholder="Last Name">
-					   <span *ngIf="!registerForm.get('lastName').valid && registerForm.get('lastName').touched">Last Name is required!</span>
-			</div>
-			<div class="form-group">
-				<label for="email">Email</label>
-				<input formControlName="email" type="email" name="email" class="form-control" id="email"
-					   placeholder="Enter email">
-			</div>
-			<div class="form-group">
-				<label for="password">Password</label>
-				<input formControlName="password" type="password" name="password"  class="form-control"
-					   id="password" placeholder="Password">
-					   <span *ngIf="registerForm.get('password').touched && !registerForm.get('password').errors">Passwords words do not match!</span>
-			</div>
-			<div class="form-group">
-				<label for="confirmPassword">Confirm Password</label>
-				<input formControlName="confirmPassword" type="password" name="confirmPassword"  class="form-control"
-					   id="confirmPassword" placeholder="Confirm Password">	  
-			</div>
-			<ng-container *ngIf="isAdmin()">
-				<div class="form-group"  >
-					<label for="inputRole">User Role (THIS IS A ROLE)</label>
-					<select id="inputRole" class="form-control" #role (change)="roleChange(role?.value)" formControlName="role">
-						<option value="" disabled>Choose a role</option>
-						<option *ngFor="let item of roleOptions" [ngValue]="item" >
-						{{item}}
-						</option>
-					</select>
+<body class="container-fluid col-sm-6 col-lg-12 col-md-6" style=" background-size: cover; height: 100vh; width: 100%; background-image: url('../assets/images/Healthy.jpg');">
+	<div class="row">
+		<div class="col-md-12 col-sm-3 registerBody">
+			<div class="row">
+				<div class="col-md-6 register-formL">
+					<h1>Join Us!</h1>
+					<h3>Subcribe to our channel for the latest recipes!</h3>
+					<button class="btn btn-primary">About Us</button>
 				</div>
-				<div class="form-group">
-					<label for="inputClaim">Claim (THIS IS A Claim)</label>
-					<select id="inputClaim" class="form-control" #JobDepartment (change)="claimChange(JobDepartment?.value)" formControlName="JobDepartment">
-						<option value="" disabled>Choose a Developer Type</option>
-						<option *ngFor="let item of developerType" [ngValue]="item">
-						{{item}}
-						</option>
-					</select>
+				<div class="col-sm-4 col-lg-4 col-md-6 register-formR">
+						<h1>Register</h1>	
+					<form class="pt-2 register-form " [formGroup]="registerForm" (ngSubmit)="onSubmit()" autocomplete="off">
+						<div class="form-group" >
+							<label for="firstName">First Name</label>
+							<input formControlName="firstName" type="text" name="firstName"  class="form-control"
+								   id="firstName" placeholder="">
+								   <span *ngIf="!registerForm.get('firstName').valid && registerForm.get('firstName').touched">First Name is required!</span>
+						</div>
+						<div class="form-group">
+							<label for="lastName">Last Name</label>
+							<input formControlName="lastName" type="text" name="lastName"  class="form-control"
+								   id="lastName" placeholder="">
+								   <span *ngIf="!registerForm.get('lastName').valid && registerForm.get('lastName').touched">Last Name is required!</span>
+						</div>
+						<div class="form-group">
+							<label for="email">Email</label>
+							<input formControlName="email" type="email" name="email" class="form-control" id="email"placeholder="">
+								   <span *ngIf="!registerForm.get('email').valid && registerForm.get('email').touched">An Email is required!</span>
+						</div>
+						<div class="form-group">
+							<label for="password">Password</label>
+							<input formControlName="password" type="password" name="password"  class="form-control"
+								   id="password" placeholder="">
+								   <span *ngIf="registerForm.get('password').errors && registerForm.get('password').dirty">Passwords words do not match!</span>
+						</div>
+						<div class="form-group">
+							<label for="confirmPassword">Confirm Password</label>
+							<input formControlName="confirmPassword" type="password" name="confirmPassword"  class="form-control"
+								   id="confirmPassword" placeholder="">	  
+						</div>
+						<!-- <ng-container *ngIf="(currentUser$|async)">
+							<div class="form-group"  >
+								<label for="inputRole">User Role (THIS IS A ROLE)</label>
+								<select id="inputRole" class="form-control" #role (change)="roleChange(role?.value)" formControlName="role">
+									<option value="" disabled>Choose a role</option>
+									<option *ngFor="let item of roleOptions" [ngValue]="item" >
+									{{item}}
+									</option>
+								</select>
+							</div>
+							<div class="form-group">
+								<label for="inputClaim">Claim (THIS IS A Claim)</label>
+								<select id="inputClaim" class="form-control" #JobDepartment (change)="claimChange(JobDepartment?.value)" formControlName="JobDepartment">
+									<option value="" disabled>Choose a Developer Type</option>
+									<option *ngFor="let item of developerType" [ngValue]="item">
+									{{item}}
+									</option>
+								</select>
+							</div>
+						</ng-container> -->
+						<button type="submit" class="btn btn-primary form-control">Register <i class="fas fa-sign-in-alt"></i></button>
+					</form>
 				</div>
-			</ng-container>
-			<button type="submit"class="btn btn-primary">Register <i class="fas fa-sign-in-alt"></i></button>
-		</form>
+			</div>
+		</div>
 	</div>
-</div>
+</body>
+	
+	
+	
+
+
 

@@ -1,9 +1,8 @@
 export interface IUser {
-    email?:string;
-    given_name?:string;
+    email:string;
     password?: string;
     token?: string;
     rememberMe?: boolean;
     JobDepartment?:string;
-    role?:string;
+    role?:string[];
 }

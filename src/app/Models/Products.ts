@@ -1,11 +1,15 @@
+import { IBrand } from "./Brand";
+import { ICategory } from "./Category";
+import { IPhoto } from "./Photos";
+
 export interface IProducts {
-    productId: number;
+    productsId: number;
     name: string;
     description: string;
-    imageUrl: string;
     price: number;
     isOnSale: boolean;
     isAvailable: boolean;
-    category: string;
-    brand: string;
+    categoryDTO?:string;
+    brandDTO?:string;
+    photosDTO?: IPhoto[]
 }

@@ -1,50 +1,66 @@
-<nav class="navbar navbar-expand-lg navbar-dark bg-dark py-3 fixed-top">
-  <div class="container">
-     <img src="" alt="">
-    <button  class="navbar-toggler" type="button" (click)="showMenu = !showMenu" data-bs-target="#navbarSupportedContent" aria-controls="collapseExample" [attr.aria-expanded]="!showMenu" aria-label="Toggle navigation">
-      <span><i class="fa fa-bars" id="bars"></i></span>
-    </button>
-    <div class="collapse navbar-collapse" id="navbarSupportedContent" [ngbCollapse]="showMenu">
-      <form class="d-flex searchBar">
-        <input class=" form-control me-2" type="search" placeholder="Search" aria-label="Search">
-        <button routerLink="/search" class=" btn btn-outline-success" type="submit"><i class="fa fa-search"></i></button>
-      </form>
-      <ul class="navbar-nav ml-auto mb-2 mb-lg-0">
-        <li class="nav-item">
-          <a class="nav-link" routerLink="/">Home</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" routerLink="/products" >Shop</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="#">About</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="#">Contact Us</a>
-        </li>
+
+  <header>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark py-2 fixed-top">
+      <div class="container">
+         <img src="" alt="">
+        <button  class="navbar-toggler" type="button" (click)="showMenu = !showMenu" data-bs-target="#navbarSupportedContent" aria-controls="collapseExample" [attr.aria-expanded]="!showMenu" aria-label="Toggle navigation">
+          <span><i class="fa fa-bars" id="bars"></i></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent" [ngbCollapse]="showMenu">
+          <form class="d-flex searchBar">
+            <input class=" form-control me-2" type="search" placeholder="Search" aria-label="Search">
+            <button routerLink="/search" class=" btn btn-outline-success" type="submit"><i class="fa fa-search"></i></button>
+          </form>
+          <ul class="navbar-nav ml-auto mb-2 mb-lg-0">
             <li class="nav-item">
-              <a class="nav-link" routerLink="/cart"><i class="fa fa-shopping-bag"></i></a>
+              <a class="nav-link" routerLink="/">Home</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" routerLink="/products" >Shop</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">About</a>
             </li>
             <li class="nav-item dropdown" dropdown>
               <a class="nav-link dropdown-toggle"id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false"  dropdownToggle>
-                <!-- {{User.email}} -->
+                Main
               </a>
-              <ul class="dropdown-menu" aria-labelledby="navbarDropdown" *dropdownMenu>
-                <li><a class="dropdown-item" href="#">Action</a></li>
-                <li><a class="dropdown-item" href="#">Another action</a></li>
-                <li><hr class="dropdown-divider"></li>
-                <li><a class="dropdown-item" href="#">Something else here</a></li>
+              <ul class="dropdown-menu" aria-labelledby="navbarDropdown" *dropdownMenu>         
+                <li><a class="nav-link" routerLink="/admin/admin-dash">Main Dash</a></li>
+                <li><a class="dropdown-item" routerLink="/admin/admin-edit">Edit</a></li>
               </ul>
             </li>
-        <ng-container *ngIf="!(currentUser$|async)">
-          <li class="nav-item">
-            <a class="nav-link" routerLink="/account/register">Register</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" routerLink="/account/login">Login</a>
-          </li>
-        </ng-container>
-      </ul>
-    </div>
-  </div>
-</nav>
+                <li class="nav-item" *ngIf="(ShoppingCart$|async) as Shop">
+                  <a class="nav-link" routerLink="/cart"><i class="fa fa-shopping-bag"></i></a>
+                </li>
+                <li class="nav-item dropdown" dropdown *ngIf="(currentUser$|async) as User">
+                  <a class="nav-link dropdown-toggle"id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false"  dropdownToggle>
+                    {{User.email}}
+                  </a>
+                  <ul class="dropdown-menu" aria-labelledby="navbarDropdown" *dropdownMenu>
+                    <li><a class="dropdown-item" href="#">Account</a></li>
+                    <li><a class="dropdown-item" href="#">Another action</a></li>
+                    <li class="nav-item"*ngIf="!(currentUser$|async) as User">
+                      <a class="nav-link" routerLink="/account/register">Register</a>
+                    </li>
+                    <li><hr class="dropdown-divider"></li>
+                    <li><a class="dropdown-item" (click)="logOut()">LogOut</a></li>
+                  </ul>
+                </li>
+            <ng-container *ngIf="!(currentUser$|async) as User">
+              <li class="nav-item">
+                <a class="nav-link" routerLink="/account/register">Register</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" routerLink="/account/login">Login</a>
+              </li>
+            </ng-container>
+          </ul>
+        </div>
+      </div>
+    </nav>
+  </header>
+
+
+
+

@@ -1,0 +1,123 @@
+
+<div class="container mt-4 pt-5">
+    <div class=" py-5">
+        <div class="row">
+            <div class="col-8">
+                <div class="text-center">
+                    <img src="" alt="" class="mb-5 mx-auto d-block">
+                    <h2>Checkout</h2>
+                    <p class="lead">You're almost there! Keep going!</p>
+                </div>
+                <div class="container py-2">
+                    <h2 class="mb-3">Shipping Address</h2>
+                    <!-- address app goes here -->
+                    <form [formGroup]="checkoutForm">
+                        <div class="row g-3">
+                            <div class="col-sm-6">
+                                <label for="firstName" class="form-label">First Name</label>
+                                <input formControlName="firstName"  id="firstName" type="text" class="form-control" placeholder="First Name">
+                            </div>
+                            <div class="col-sm-6">
+                                <label for="lastName" class="form-label">Last Name</label>
+                                <input formControlName="lastName" id="lastName" type="text" class="form-control" placeholder="Last Name">
+                            </div>
+                            <div class="col-12 mt-1">
+                                <label for="Street" class="form-label"> Street</label>
+                                <input formControlName="street" id="street" type="text" class="form-control" placeholder="Street">
+                            </div>
+                            <div class="col-md-5 mt-1">
+                                <label for="city" class="form-label">City</label>
+                                <input formControlName="city" id="city" class="form-control">
+                                <!-- <select formControlName="city" id="city" class="form-control">
+                                    <option value=""></option>
+                                    <option>Brooklyn</option>
+                                </select> -->
+                            </div>
+                            <div class="col-md-4 mt-1">
+                                <label for="state" class="form-label">State</label>
+                                <input formControlName="state" class="form-control" id="state">
+                                <!-- <select formControlName="state" id="state" class="form-control">
+                                    <option value=""></option>
+                                    <option>NY</option>
+                                </select> -->
+                            </div>
+                            <div class="col-md-3 mt-1">
+                                <label for="ZipCode" class="form-label">ZipCode</label>
+                                <input formControlName="zipCode" id="zipCode" type="number" class="form-control" placeholder="ZipCode">
+                            </div> 
+                            <div class="col-md-12 ml-4 mt-3">
+                                <!-- You have to disabled this checkbox if the data changed! -->
+                                <input [disabled]="!checkoutForm.valid" id="saveinfo" type="checkbox" class="form-check-input" (click)="saveUserAddress()">
+                                <label class="form-check-label" for="saveinfo">Save as default Address?</label>
+                            </div>                    
+                        </div>
+                    </form> 
+                    <hr> 
+                    <!-- end of address -->
+ 
+                        <h2 class="mt-1 pt-1">Payment Type</h2>
+                        <hr>
+                    <form [formGroup]="paymentForm">
+                        <div class="row mx-1">
+                            <div class="form-check col-md-6">
+                                <input class="form-check-input" name="paymentMethod" type="radio" id="creditCard">
+                                <label for="creditCard">Credit Card</label>
+                            </div>
+                            <div class="form-check col-md-6">
+                                <input class="form-check-input" type="radio" name="paymentMethod" id="debitCard">
+                                <label for="debitCard">Debit Card</label>
+                            </div>
+                        </div>
+                        <div>
+                            <div class="row my-3 gy-3">
+                                <div class="col-md-6">
+                                   <label for="fullName" class="form-label">Name On Card</label>
+                                    <input formControlName="nameOnCard" type="text" id="nameOnCard" class="form-control">
+                                    <small class="text-muted">
+                                        Full name as displayed on card
+                                    </small>
+                                </div>
+                                <div class="col-md-6">
+                                    <label for="cardNumber" class="form-label">Card Number</label>
+                                    <div #cardNumber type="text" id="cardNumber" class="form-control"></div>
+                                    <ng-container *ngIf="cardError">
+                                        <span class="text-danger">{{cardError}}</span>
+                                    </ng-container>
+                                    <small class="text-muted" *ngIf="">
+                                        As displayed on Card
+                                     </small>
+                                </div>
+                                <div class="col-md-3">
+                                    <label for="cardExpiry" class="form-label">Expiration Date</label>
+                                    <div #cardExpiry type="text" id="cardExpiry" class="form-control"></div>
+                                </div>
+                                <div class="col-md-3">
+                                    <label for="cardCvc" class="form-label">CVC</label>
+                                    <div #cardCvc type="text" id="cardCvc" class="form-control"></div>
+                                </div>
+                            </div>
+                            <button [disabled]="
+                            !checkoutForm.valid 
+                            || !paymentForm.valid
+                            || !cardCvc 
+                            || !cardExpiry 
+                            || !cardNumber"
+                            (click)="submitOrder()"
+                            class="btn btn-primary btn-lg btn-block" type="submit">Checkout 
+                                <i *ngIf="loading" class="fa fa-spinner fa-spin"></i></button>
+                            <!-- <button [disabled]="" 
+                            class="btn btn-primary btn-lg btn-block" type="submit">Checkout 
+                                <i *ngIf="" class="fa fa-spinner fa-spin"></i></button> -->
+                        </div>
+                    </form>
+                </div>
+            </div>
+
+            <div class="col-4 mt-5">
+            <app-order-summary></app-order-summary>
+            </div>
+        </div>
+    </div>
+</div>
+
+

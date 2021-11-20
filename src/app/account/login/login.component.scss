@@ -1,6 +1,10 @@
 
 .container-fluid{
     overflow: hidden;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-position: center;
+    position: relative;
 }
 .content{
     position: absolute;
@@ -11,10 +15,21 @@
     text-align: center;
     z-index: 999;
     width: 390px;
+   
     text-align: center;
-    padding: 60px 32px;
+    padding: 70px 32px;
     background:rgba(255,255,0,0.4); 
     box-shadow: -1px 4px 28px 0px rgba(0,0,0,0.7);
+}
+@media (min-width:576px) {
+
+    .container-fluid{
+        overflow: hidden;
+        background-repeat: no-repeat;
+        background-attachment: fixed;
+        background-position: center;
+        position: relative;
+    }
 }
 .ptag{
     font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
@@ -28,8 +43,7 @@
     color: gold;
     text-shadow: .1rem .1rem .8rem black;
     text-transform: uppercase;
-    font-size: 40px;
-    font-size: 600;
+    font-size: 50px;
     margin: 0 0 35px 0;
     font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
 }
@@ -38,6 +52,20 @@
     color: #222;
     width: 40px;
     line-height: 45px;
+}
+
+.field .loge{
+    color: black;
+    align-items: center;
+    text-align: center;
+    display: flex;
+}
+
+.field .logp{
+    color: black;
+    display: flex;
+    align-items: center;
+    text-align: center;
 }
 .field{
     position: relative;

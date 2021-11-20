@@ -3,6 +3,7 @@ import { Injectable } from '@angular/core';
 import { BehaviorSubject } from 'rxjs';
 import { map } from 'rxjs/operators';
 import { environment } from 'src/environments/environment';
+import { IDelivery } from '../Models/Delivery';
 import { IProducts } from '../Models/Products';
 import { IShoppingCart, IShoppingCartItems, IShoppingCartTotals, ShoppingCart } from '../Models/ShoppingCart';
 
@@ -13,25 +14,50 @@ export class ShoppingCartService {
   baseUrl = environment.baseUrl
   private ShoppingCartSource = new BehaviorSubject<IShoppingCart>(null)
   ShoppingCart$ = this.ShoppingCartSource.asObservable()
-
   private ShoppingCartTotalSource = new BehaviorSubject<IShoppingCartTotals>(null)
   ShoppingCartTotal$ = this.ShoppingCartTotalSource.asObservable()
   shipping = 0
   constructor(private http:HttpClient) { }
 
+  createPaymentIntent(){
+    return this.http.post(this.baseUrl + 'Payment/'+ this.cartValue().shopId,{})
+    .pipe(
+      map((Cart:IShoppingCart) =>{
+        this.ShoppingCartSource.next(Cart)
+        console.log(this.cartValue())
+      })
+    )
+  }
 
   getShoppingCart(Id:string){
     return this.http.get(this.baseUrl + 'ShoppingCart?id=' + Id)
     .pipe(
       map((Cart?:IShoppingCart) =>{
           this.ShoppingCartSource.next(Cart)
+          this.shipping = Cart.deliveryPrice
           this.calcualteTotals()
           console.log(this.cartValue())
       })
     );
   }
 
+  getShippingValue(deli:IDelivery){
+    this.shipping = deli.price
+    const Cart = this.cartValue()
+    Cart.deliveryId = deli.deliveryId
+    Cart.deliveryPrice = deli.price
+    this.calcualteTotals()
+    this.setShoppingCart(Cart)
+  }
 
+  getDelivery(){
+    return this.http.get<IDelivery[]>(this.baseUrl + 'Order/deli')
+    .pipe(
+      map((delivery:IDelivery[])=>{
+        return delivery
+      })
+    )
+  }
 
   setShoppingCart(Cart:IShoppingCart){
     return this.http.post<IShoppingCart>(this.baseUrl + 'ShoppingCart', Cart).subscribe((result:IShoppingCart) =>{
@@ -56,14 +82,14 @@ export class ShoppingCartService {
 
   increment(item:IShoppingCartItems){
     const Cart = this.cartValue()
-    const objtofind = Cart.shoppingCartItems.findIndex(x => x.productId === item.productId)
+    const objtofind = Cart.shoppingCartItems.findIndex(x => x.cartItemsId === item.cartItemsId)
     Cart.shoppingCartItems[objtofind].amount++;
     this.setShoppingCart(Cart);
   }
 
   decrement(item:IShoppingCartItems){
     const Cart = this.cartValue()
-    const objtofind = Cart.shoppingCartItems.findIndex(x => x.productId === item.productId)
+    const objtofind = Cart.shoppingCartItems.findIndex(x => x.cartItemsId === item.cartItemsId)
     if(Cart.shoppingCartItems[objtofind].amount > 1){
       Cart.shoppingCartItems[objtofind].amount--;
       this.setShoppingCart(Cart);
@@ -75,8 +101,8 @@ export class ShoppingCartService {
 
   removeItem(item: IShoppingCartItems) {
     const Cart = this.cartValue()
-    if(Cart.shoppingCartItems.some(x => x.productId === item.productId)){
-      Cart.shoppingCartItems = Cart.shoppingCartItems.filter(x => x.productId !== item.productId)
+    if(Cart.shoppingCartItems.some(x => x.cartItemsId === item.cartItemsId)){
+      Cart.shoppingCartItems = Cart.shoppingCartItems.filter(x => x.cartItemsId !== item.cartItemsId)
       if(Cart.shoppingCartItems.length > 0){
         this.setShoppingCart(Cart)
       }else{
@@ -111,7 +137,7 @@ export class ShoppingCartService {
   }
 
   private addOrUpdateItems(Items: IShoppingCartItems[], itemToAdd: IShoppingCartItems, amount: number): IShoppingCartItems[] {
-    const index = Items.findIndex(x => x.productId === itemToAdd.productId)
+    const index = Items.findIndex(x => x.cartItemsId === itemToAdd.cartItemsId)
     if(index === -1){
       itemToAdd.amount = amount
       Items.push(itemToAdd)
@@ -129,14 +155,13 @@ export class ShoppingCartService {
   
   private mappedCart(item: IProducts, amount: number): IShoppingCartItems {
     return{
-      productId:item?.productId,
-      name:item?.name,
-      imageUrl:item?.imageUrl,
+      cartItemsId:item?.productsId,
+      itemName:item?.name,
       description:item?.description,
       price:item?.price,
       amount,
-      category:item?.category,
-      brand:item?.brand
+      category:item?.categoryDTO,
+      brand:item?.brandDTO
     }
   }
 }

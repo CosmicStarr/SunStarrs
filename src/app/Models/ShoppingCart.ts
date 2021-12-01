@@ -8,6 +8,7 @@ export interface IShoppingCartItems {
     amount: number;
     category: string;
     brand: string;
+    photoUrl:string;
 }
 
 export interface IShoppingCart {

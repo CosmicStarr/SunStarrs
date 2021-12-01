@@ -1,12 +1,12 @@
 import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { FileUploader } from 'ng2-file-upload';
 
 import { map } from 'rxjs/operators';
 import { environment } from 'src/environments/environment';
 import { IBrand } from '../Models/Brand';
 import { ICategory } from '../Models/Category';
 import { PaginatedResults } from '../Models/Pagination';
-import { IPhoto } from '../Models/Photos';
 import { IProducts } from '../Models/Products';
 import { SunParams } from '../Models/SunStarrParams';
 
@@ -69,15 +69,20 @@ export class ProductService {
     return this.http.get<IBrand[]>(this.baseUrl + 'Products/Brand')
   }
 
-  postProduct(product:any){
+  postProduct(product:IProducts){
     return this.http.post(this.baseUrl + 'CreateItems/CreateProduct', product)
+  }
+
+  putProduct(id:any,product:IProducts){
+    return this.http.put(this.baseUrl + 'CreateItems/UpdateProduct/'+ id, product)
   }
 
   postCategory(category:ICategory){
     return this.http.post<ICategory>(this.baseUrl + 'CreateItems/CreateCategory',category)
   }
-  postImage(id:number,photos:IPhoto){
-    return this.http.post<IPhoto>(this.baseUrl + 'CreateItems/AddPhoto'+ id, photos)
+
+  postImage(id:number,photos:FileUploader){
+    return this.http.post(this.baseUrl + 'CreateItems/AddPhoto/'+ id, photos)
   }
 
 }

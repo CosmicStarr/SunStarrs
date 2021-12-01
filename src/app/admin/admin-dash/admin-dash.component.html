@@ -1,7 +1,7 @@
 <div class="container col-sm-4 col-lg-12 col-md-6" style=" background-size: cover; height: 100vh; width: 100%; background: url('../assets/images/bigstockAvacado.jpeg');">
 	<div class="content container">
 		<header>Welcome to <hr>SunStarrs</header>
-		<h3 class="ptag">Create Brand</h3>
+		<h3 class="ptag"> Edit {{products?.name}}</h3>
 		<form class="action" [formGroup]="productForm" (ngSubmit)="onSubmit()">
 			<div class="field">
 				<span class="fa fa-user"></span>
@@ -37,6 +37,10 @@
 				{{item.name}}
 				</option>   
 			</select>
+			<!-- <div class="field">
+			<label for="photoDTO">Photo</label>
+				<input formControlName="photoDTO" type="file">
+			</div> -->
 			<!-- <ng-container formArrayName="Form" *ngIf="category || brand">
 				<div [formGroup]="catgoryForm">
 					<label for="name">Catgory Select</label>
@@ -67,23 +71,81 @@
 		</form>
 		<hr>
 	</div>
+	<div class="container">
+
+	 
+		<div class="row">
+	 
+			<div class="col-md-3">
+	 
+				<h3>Select files</h3>
+	 
+				<div ng2FileDrop
+					 [ngClass]="{'nv-file-over': hasBaseDropZone}"
+					 (fileOver)="fileOverDropZone($event)"
+					 [uploader]="uploader"
+					 class="card bg-faded p-3 text-center mb-3 my-drop-zone">
+					 <i class="fa-fa-upload"></i>
+					Drop pics here!
+				</div>
+	 
+				<!-- Multiple
+				<input type="file" ng2FileSelect [uploader]="uploader" multiple  /><br/>
+	  -->
+				Single
+				<input type="file" ng2FileSelect [uploader]="uploader"/>
+			</div>
+	 
+			<div class="col-md-9" style="margin-bottom: 40px" >
+	 
+				<h3>Upload queue</h3>
+				<p>Queue length: {{ uploader?.queue?.length }}</p>
+	 
+				<table class="table">
+					<thead>
+					<tr>
+						<th width="50%">Name</th>
+						<th>Size</th>
+					
+					</tr>
+					</thead>
+					<tbody>
+					<tr *ngFor="let item of uploader.queue">
+						<td><strong>{{ item?.file?.name }}</strong></td>
+						<td *ngIf="uploader.options.isHTML5" nowrap>{{ item?.file?.size/1024/1024 | number:'.2' }} MB</td>
+					</tr>
+					</tbody>
+				</table>
+	 
+				<div>
+					<div>
+						Queue progress:
+						<div class="progress" >
+							<div class="progress-bar" role="progressbar" [ngStyle]="{ 'width': uploader.progress + '%' }"></div>
+						</div>
+					</div>
+					<button type="button" class="btn btn-success btn-s"
+							(click)="uploader.uploadAll()" [disabled]="!uploader.getNotUploadedItems().length">
+						<span class="fa fa-upload"></span> Upload 
+					</button>
+					<button type="button" class="btn btn-warning btn-s"
+							(click)="uploader.cancelAll()" [disabled]="!uploader.isUploading">
+						<span class="fa fa-ban"></span> Cancel 
+					</button>
+					<button type="button" class="btn btn-danger btn-s"
+							(click)="uploader.clearQueue()" [disabled]="!uploader.queue.length">
+						<span class="fa fa-trash"></span> Remove 
+					</button>
+				</div>
+	 
+			</div>
+	 
+		</div>
+		
+	</div>
 </div>
+
+
 {{productForm.value | json}}
 
-
-<!-- <form [formGroup]="catgoryForm" (ngSubmit)="postCat()" class="mt-5">
-	<select class="custom-select mb-3" formControlName="name" id="name" name="name" value="name">
-		<option *ngFor="let item of category"
-		[value]="item.name">
-		{{item.name}}
-		</option>   
-	  </select>
-	  <div class="field">
-		<span class="fa fa-user"></span>
-		<input formControlName="description" type="text">
-	</div>
-	<div class="Login">
-		<button class="btn btn-primary form-control">submit</button>
-	</div>
-</form> -->
 

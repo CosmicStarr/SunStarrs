@@ -4,13 +4,14 @@
         <input  class="form-control me-2" [(ngModel)]="term" name="term" type="search" placeholder="Search" aria-label="Search">
         <button routerLink="/search" class=" btn btn-outline-success" type="submit"><i class="fa fa-search"></i></button>
     </form>
-    <span *ngIf="">What your looking for does not exist!</span>
     <ul class="list-group pt-1" *ngIf="term">
         <div *ngFor="let item of Products | filter : term ">
-            <a class="list-group-item" routerLink="/products/{{item.productId}}" aria-current="true">
-                {{item?.name}}
+            <a class="list-group-item" routerLink="/products/{{item.productsId}}" aria-current="true">
+                {{item?.name}}: {{item?.categoryDTO}}
             </a>
         </div>
     </ul>
+    <!-- Create a searchBar Form to add validations! -->
+    <!-- <span *ngIf="term">What your looking for does not exist!</span> -->
 </div>
 

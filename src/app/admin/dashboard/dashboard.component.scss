@@ -1,0 +1,90 @@
+
+.dashGridList{
+    width: 95%;
+    margin: auto;
+    margin-top: 15px;
+}
+
+.tipMenus{
+    background-color: gold;
+}
+
+.grid-tile>.mat-figure{
+    justify-content: flex-start !important;
+    align-items: flex-start !important;
+}
+.gridtitleHeading{
+    font-size: 1.6em;
+    padding-right: 20px;
+    width: 100%;
+    margin-bottom: 8px;
+    font-family: Arial, Helvetica, sans-serif;
+}
+.gridtitleSub{
+    font-size: 1.4em;
+    font-weight: bold;
+    width: 100%;
+    padding-right: 25px;
+}
+.biggerIcon{
+    font-size: 40px;
+    margin-left:40px;
+}
+.dash1{
+    color: yellow; 
+    background-color: rebeccapurple;
+    text-transform: uppercase;
+    text-shadow: .1rem .1rem .3rem black;   
+    border-radius: 5px;
+    box-shadow: 1px 1px 4px 1px goldenrod;
+}
+.dash1:hover{
+    background: royalblue;
+    opacity: 0.6s;
+    transition: 0.4s all ;
+    cursor: pointer;
+}
+
+.dash2{
+    color: yellow; 
+    background-color: orangered;
+    text-transform: uppercase;
+    text-shadow: .1rem .1rem .3rem black;   
+    border-radius: 5px;
+    box-shadow: 1px 1px 4px 1px goldenrod;
+}
+.dash2:hover{
+    background: royalblue;
+    opacity: 0.6s;
+    transition: 0.4s all ;
+    cursor: pointer;
+}
+.dash3{
+    color: yellow; 
+    background-color: darkblue;
+    text-transform: uppercase;
+    text-shadow: .1rem .1rem .3rem black;   
+    border-radius: 5px;
+    box-shadow: 1px 1px 4px 1px goldenrod;
+}
+.dash3:hover{
+    background: royalblue;
+    opacity: 0.6s;
+    transition: 0.4s all ;
+    cursor: pointer;
+}
+.dash4{
+    color: yellow; 
+    background-color: green;
+    text-transform: uppercase;
+    text-shadow: .1rem .1rem .3rem black;   
+    border-radius: 5px;
+    box-shadow: 1px 1px 4px 1px goldenrod;
+}
+.dash4:hover{
+    background: royalblue;
+    opacity: 0.6s;
+    transition: 0.4s all ;
+    cursor: pointer;
+}
+

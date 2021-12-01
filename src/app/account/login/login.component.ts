@@ -15,7 +15,7 @@ export class LoginComponent implements OnInit {
   constructor(private accountService:AccountService,private route:Router,private activatedRoute:ActivatedRoute) { }
 
   ngOnInit(): void {
-    this.returnUrl = this.activatedRoute.snapshot.queryParams.returnUrl || ''
+    this.returnUrl = this.activatedRoute.snapshot.queryParams.returnUrl 
     this.createForm()
     this.setCurrentUser()
    

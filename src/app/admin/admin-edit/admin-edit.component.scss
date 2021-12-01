@@ -1,3 +1,31 @@
 .full-width-table {
   width: 100%;
 }
+.text-italic{
+  font-style: italic;
+  font-weight: bold;
+  color: goldenrod;
+}
+
+.hidden{
+  padding: auto;
+  display: none;
+}
+.table-container{
+  min-height: 250px;
+  height: 550px;
+  overflow: auto;
+}
+.mat-spinner{
+  margin: auto;
+}
+.colour{
+  background-color: goldenrod;
+}
+.container-fluid{
+  overflow: hidden;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-position: center;
+  position: relative;
+}

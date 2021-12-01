@@ -1,0 +1,45 @@
+<mat-grid-list [cols]="gridColumns" gutterSize="20px" rowHeight="120px" class="dashGridList">
+    <!-- first tile -->
+    <mat-grid-tile class="grid-tile dash1" fxLayout="row" fxLayoutAlign="start stretch" matRipple matTooltip="Total Products" matTooltipClass="tipMenus">
+        <div fxFlex="1125%" fxLayout="column" fxLayoutAlign="center start" class="h-100">
+            <mat-icon class="biggerIcon">description</mat-icon>
+        </div>
+        <div fxFlex="1175%" class="h-100 text-right" fxLayout="column" fxLayoutAlign="center start">
+            <div class="gridtitleHeading">Total Products</div>
+            <div class="gridtitleSub">30</div>
+        </div>
+    </mat-grid-tile>
+    <!-- Second tile -->
+    <mat-grid-tile class="grid-tile dash2" fxLayout="row" fxLayoutAlign="start stretch" matRipple matTooltip="Available Products" matTooltipClass="tipMenus">
+        <div fxFlex="1125%" fxLayout="column" fxLayoutAlign="center start" class="h-100">
+            <mat-icon class="biggerIcon">fact_check</mat-icon>
+        </div>
+        <div fxFlex="1175%" class="h-100 text-right" fxLayout="column" fxLayoutAlign="center start">
+            <div class="gridtitleHeading">Available Products</div>
+            <div class="gridtitleSub">20</div>
+        </div>
+    </mat-grid-tile>
+    <!-- third tile -->
+    <mat-grid-tile class="grid-tile dash3" fxLayout="row" fxLayoutAlign="start stretch" matRipple matTooltip="Total Users" matTooltipClass="tipMenus">
+        <div fxFlex="1125%" fxLayout="column" fxLayoutAlign="center start" class="h-100">
+            <mat-icon class="biggerIcon">people_outline</mat-icon>
+        </div>
+        <div fxFlex="1175%" class="h-100 text-right" fxLayout="column" fxLayoutAlign="center start">
+            <div class="gridtitleHeading">Total Users</div>
+            <div class="gridtitleSub">250</div>
+        </div>
+    </mat-grid-tile>
+    <!-- forth tile -->
+    <mat-grid-tile class="grid-tile dash4" fxLayout="row" fxLayoutAlign="start stretch" matRipple matTooltip="New Users this Week" matTooltipClass="tipMenus">
+        <div fxFlex="1125%" fxLayout="column" fxLayoutAlign="center start" class="h-100">
+            <mat-icon class="biggerIcon">group_add</mat-icon>
+        </div>
+        <div fxFlex="1175%" class="h-100 text-right" fxLayout="column" fxLayoutAlign="center start">
+            <div class="gridtitleHeading">New Users</div>
+            <div class="gridtitleSub">20</div>
+        </div>
+    </mat-grid-tile>
+    <mat-grid-tile [colspan]="cardColSpan" rowspan="3" style="background-color: aqua;">dont</mat-grid-tile>
+    <mat-grid-tile [colspan]="cardColSpan" rowspan="3" style="background-color: aqua;">give</mat-grid-tile>
+
+</mat-grid-list>

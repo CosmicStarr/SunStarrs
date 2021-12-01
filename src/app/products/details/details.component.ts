@@ -11,7 +11,7 @@ import { ShoppingCartService } from 'src/app/_services/shopping-cart.service';
   styleUrls: ['./details.component.scss']
 })
 export class DetailsComponent implements OnInit {
-  @Input() products?:IProducts
+  products:IProducts
   amount = 0
   constructor(private productService:ProductService, private route:ActivatedRoute, private CartService:ShoppingCartService) { }
 
@@ -22,6 +22,7 @@ export class DetailsComponent implements OnInit {
   loadProduct(){
     this.productService.getProduct(+this.route.snapshot.paramMap.get('id')).subscribe((results)=>{
       this.products = results
+      console.log(results)
     },error =>{
       console.log(error)
     })

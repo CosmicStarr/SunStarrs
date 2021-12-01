@@ -9,6 +9,7 @@ import { Router } from '@angular/router';
 import { IAddress } from '../Models/Address';
 import { IForgotPassword } from '../Models/ForgotPassword';
 import { IResetPassword } from '../Models/ResetPassword';
+import { IActualOrder, OrderedItem } from '../Models/Orders';
 
 
 @Injectable({
@@ -90,6 +91,13 @@ export class AccountService {
   }
   
   updateUserAddress(address:IAddress){
-   return this.http.post<IAddress>(this.baseUrl+'Account/Address', address);
+   return this.http.put<IAddress>(this.baseUrl+'Account/Address', address);
+  }
+
+  getOrders(){
+    return this.http.get<IActualOrder>(this.baseUrl +'Order')
+  }
+  getSingleOrder(id:number){
+    return this.http.get<OrderedItem>(this.baseUrl+'Order'+ id)
   }
 }

@@ -1,0 +1,100 @@
+
+<mat-toolbar fxLayout="row" fxLayoutAlign="space-between center" class="nav">
+    <!-- left Column start -->
+    <div class="colour" fxLayout="row" fxLayoutAlign="space-between center">
+        <button mat-icon-button (click)="drawer.toggle()" >
+            <mat-icon>menu</mat-icon>
+        </button>
+        <a mat-icon-button>
+            <mat-icon>home</mat-icon>
+        </a>
+        <span class="colour">SunStarrs</span>
+    </div>
+    <!-- middle Column start -->
+    <div class="colour">
+        <!-- matTooltipClass is not working find a way to make it work! -->
+        <button type="button" fxHide.lt-md="true" mat-stroked-button (click)="showStatistics = !showStatistics" matTooltipClass="tip-Back"
+        matTooltip="Click to Expand/Click again to Close" 
+         matTooltipShowDelay="1000">
+            <mat-icon>analytics </mat-icon>
+            <span class="ml-1 mr-1"> Statistics</span>
+            <mat-icon class="rotate" [ngClass]="{'rotation-180':showStatistics}"> keyboard_arrow_down</mat-icon>
+        </button>
+    </div>
+    <!-- right Column start -->
+    <div class="colour">
+        <button type="button" [mat-menu-trigger-for]="UserSubMenu" fxHide.lt-md="true" mat-icon-button><mat-icon>account_circle</mat-icon></button>
+        <button type="button" mat-icon-button [mat-menu-trigger-for]="NotificationSubMenu" 
+        class="ml-2 mr-2"><mat-icon matBadge="3" matBadgeColor="">notifications</mat-icon></button>
+        <button type="button" mat-icon-button [mat-menu-trigger-for]="topMenu"><mat-icon>more_vert</mat-icon></button>
+    </div>
+    <!-- Menu Column  -->
+    <mat-menu #topMenu="matMenu">
+        <a [routerLink]="['/']"mat-menu-item [mat-menu-trigger-for]="DashSubMenu">Dashboard</a>
+        <mat-divider></mat-divider>
+        <button mat-menu-item [mat-menu-trigger-for]="UserSubMenu">User Options</button>
+        <mat-divider></mat-divider>
+        <button mat-menu-item>Statistics</button>
+        <mat-divider></mat-divider>
+        <button mat-menu-item>SignOut</button>
+    </mat-menu>
+    <!-- Sub Column Menu Option -->
+    <mat-menu #DashSubMenu="matMenu">
+        <a [routerLink]="['/']" mat-menu-item>Add New Employee</a>
+        <mat-divider></mat-divider>
+        <a [routerLink]="['/']" mat-menu-item>List of Users</a>
+    </mat-menu>
+
+    <mat-menu #UserSubMenu="matMenu">
+        <button mat-menu-item>Profile</button>
+        <mat-divider></mat-divider>
+        <button mat-menu-item>Change Password</button>
+        <mat-divider></mat-divider>
+        <button mat-menu-item>Forgot Password</button>
+    </mat-menu>
+
+    <mat-menu #NotificationSubMenu="matMenu"> 
+        <button mat-menu-item><mat-icon>email</mat-icon></button>
+        <mat-divider></mat-divider>
+        <button mat-menu-item><mat-icon>receipt_long</mat-icon></button>
+        <mat-divider></mat-divider>
+        <button mat-menu-item><mat-icon>chat</mat-icon></button>
+    </mat-menu>
+</mat-toolbar>
+<!-- Expansion ToolBar -->
+<mat-expansion-panel [expanded]="showStatistics">
+  <div fxLayout="row" class="mt" fxLayoutAlign="space-evenly center" fxLayoutGap="20px">
+    <div class="colour2" >Purchase Summary:
+
+    </div>
+    <div class="colour2" matRipple>Today:
+        <div class="subColour handIcon">2</div>
+    </div>
+    <div class="colour2" matRipple>This Month:
+        <div class="subColour handIcon">699</div>
+    </div>
+    <div class="colour2" matRipple>This Year:
+        <div class="subColour handIcon">7880</div>
+    </div>
+  </div>
+</mat-expansion-panel>
+<!-- SideBar -->
+<mat-sidenav-container>
+    <mat-sidenav #drawer mode="side" opened="true" role="navigation">
+        <div class="userLogo">
+            <mat-icon class="UserIcon">person_outline</mat-icon>
+        </div>
+        <div class="ValignMiddle"> User</div>
+        <mat-divider></mat-divider>
+        <mat-nav-list>
+            <a routerLinkActive="link-active" [routerLink]="['/admin/admin-home/dashboard']" class="colour" mat-list-item>Dashboard</a>
+            <a routerLinkActive="link-active" [routerLink]="['/admin/admin-home/edit']" class="colour" mat-list-item>Products</a>
+            <a routerLinkActive="link-active" [routerLink]="['/admin/admin-home/new-product']" class="colour" mat-list-item>Edit</a>
+        </mat-nav-list>
+    </mat-sidenav>
+    <mat-sidenav-content role="directory">
+        <router-outlet></router-outlet>
+    </mat-sidenav-content>
+</mat-sidenav-container>
+
+

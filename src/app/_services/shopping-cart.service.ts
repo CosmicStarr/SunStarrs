@@ -131,7 +131,7 @@ export class ShoppingCartService {
   private calcualteTotals(){
     const Cart = this.cartValue();
     const shipping = this.shipping;
-    const subTotal = Cart.shoppingCartItems.reduce((a,b)=>(b.price * b.amount) + a,0);
+    const subTotal = Cart.shoppingCartItems.reduce((a,item)=>(item.price * item.amount) + a,0);
     const total = shipping + subTotal;
     this.ShoppingCartTotalSource.next({shipping,subTotal,total});
   }
@@ -160,6 +160,7 @@ export class ShoppingCartService {
       description:item?.description,
       price:item?.price,
       amount,
+      photoUrl:item?.photosDTO,
       category:item?.categoryDTO,
       brand:item?.brandDTO
     }

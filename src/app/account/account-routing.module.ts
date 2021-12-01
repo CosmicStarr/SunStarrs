@@ -5,8 +5,10 @@ import { ForgotPasswordComponent } from './forgot-password/forgot-password.compo
 import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './register/register.component';
 import { ResetPasswordComponent } from './reset-password/reset-password.component';
+import { UserAccountComponent } from './user-account/user-account.component';
 
 const routes: Routes = [
+  {path:'user',component:UserAccountComponent},
   {path:'login',component:LoginComponent},
   {path:'register',component:RegisterComponent},
   {path:'confirmEmail',component:ConfirmEmailComponent},

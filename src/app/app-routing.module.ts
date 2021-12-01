@@ -14,15 +14,16 @@ import { ShoppingCartComponent } from './shopping-cart/shopping-cart.component';
 const routes: Routes = [
   {path:'account', loadChildren:()=>import('./account/account.module').then(mod =>mod.AccountModule)},
   {path:'admin', loadChildren:()=>import('./admin/admin.module').then(mod =>mod.AdminModule)},
-  {path:'',component:HomeComponent,pathMatch:"full"},
+  {path:'home',component:HomeComponent,pathMatch:"full"},
   {path:'products',component:ProductsComponent,canActivate:[AuthGuard]},
-  {path:'products/:id',component:DetailsComponent},
-  {path:'cart',component:ShoppingCartComponent},
+  {path:'products/:id',component:DetailsComponent,canActivate:[AuthGuard]},
+  {path:'cart',component:ShoppingCartComponent,canActivate:[AuthGuard]},
   {path:'search',component:SearchComponent},
   {path:'checkout',component:CheckoutComponent,canActivate:[AuthGuard]},
   {path:'error',component:ErrorComponent},
   {path:'servererror',component:ServerErrorComponent},
-  {path:'notfound',component:NotfoundComponent}
+  {path:'notfound',component:NotfoundComponent},
+  {path:'**',redirectTo:'home',pathMatch:"full"}
 
 
 ];

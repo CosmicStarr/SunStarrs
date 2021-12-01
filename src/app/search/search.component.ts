@@ -12,24 +12,18 @@ import { ProductService } from '../_services/product.service';
 })
 export class SearchComponent implements OnInit {
   Products:IProducts[]
-  sun = new SunParams()
   term: any;
 
   constructor(private route:ActivatedRoute,private productService:ProductService) { }
 
   ngOnInit(): void {
-    this.productService.getProducts(this.sun).subscribe((results)=>{
+    this.productService.getProducts().subscribe((results)=>{
       this.Products = results.result;
     },error=>{
       console.log(error)
     })
 
   }
-
-
-
- 
-
   searchRoute(){
     this.route.queryParams.subscribe(data =>{
       console.log(data)

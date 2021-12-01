@@ -1,0 +1,109 @@
+.mat-toolbar{
+    margin-top: 54px!important;
+    background-color: goldenrod;
+}
+.colour{
+    text-transform: uppercase;
+    color: black;
+    text-shadow: .1rem .1rem .8rem black;
+}
+.colour2{
+    text-transform: uppercase;
+    color: goldenrod;
+    font-style: bold;
+    font-size: large;
+    text-shadow: .1rem .1rem .3rem black;
+}
+.subColour{
+    font-style: bold;
+    font-style: italic;
+    text-shadow: .1rem .1rem .3rem black;
+}
+
+.tip-Back{
+    background-color: greenyellow !important;
+    color: black !important;
+}
+
+
+mat-sidenav-container{
+    margin-top: 3px;
+    min-height: 90vh !important;
+    min-width: 360px;
+}
+mat-sidenav, mat-sidenav-content{
+    padding: 16px;
+}
+mat-sidenav{
+    background-color: goldenrod;
+    width: 200px;
+}
+
+.link-active{
+    border-left: 5px solid royalblue;
+}
+
+
+.main{
+    padding: 12px;
+    min-height: 90vh !important;
+    min-width: 360px;
+    background-color: goldenrod;
+}
+
+.ValignMiddle{
+    margin-left: 53px;
+    vertical-align: middle;
+    padding-bottom: 10px;
+    text-transform: uppercase;
+    color: #000;
+    text-shadow: .1rem .1rem .3rem black;
+}
+
+.handIcon{
+    cursor: pointer;
+    padding: 10px;
+}
+
+.UserIcon{
+    font-size: 40px;
+    margin-left: 50px;
+    color: #000;
+    text-shadow: .1rem .1rem .3rem black;
+}
+
+.drawer{
+    transition: border 0.3s;
+    width: 200px;
+    background-color: black;
+}
+
+.nav{
+    box-shadow: 0px 0px 7px 0px black;
+    z-index: 99;
+    margin-bottom: 2px;
+    min-width: 360px;
+}
+
+.rotate{
+    transition:transform 0.4s;
+}
+
+.rotation-180{
+    transform: rotate(180deg);
+}
+
+@media screen and (max-width:590px){
+    .mat-toolbar{
+        margin-top: 54px;
+    }
+}
+.mt{
+    margin-top: 8px;
+}
+.ml{
+    margin-left: 8px;
+}
+.mr{
+    margin-right: 8px;
+}

@@ -8,6 +8,7 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { ConfirmEmailComponent } from './confirm-email/confirm-email.component';
 import { ResetPasswordComponent } from './reset-password/reset-password.component';
 import { ForgotPasswordComponent } from './forgot-password/forgot-password.component';
+import { UserAccountComponent } from './user-account/user-account.component';
 
 
 
@@ -17,7 +18,8 @@ import { ForgotPasswordComponent } from './forgot-password/forgot-password.compo
     RegisterComponent,
     ConfirmEmailComponent,
     ResetPasswordComponent,
-    ForgotPasswordComponent
+    ForgotPasswordComponent,
+    UserAccountComponent
   ],
   imports: [
     CommonModule,

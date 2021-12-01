@@ -20,9 +20,9 @@ export class ShoppingCartComponent implements OnInit {
 
   ngOnInit(): void {
     this.ShoppingCart$ = this.CartService.ShoppingCart$
- 
-    this.deliveryForm()
     this.getDeliveries()
+    this.deliveryForm()
+    
   }
 
   paymentIntent(){
@@ -32,6 +32,7 @@ export class ShoppingCartComponent implements OnInit {
       console.log(error)
     })
   }
+
   deliveryForm(){
     this.deliveryInput = new FormGroup({
       deli:new FormControl('',Validators.required)
@@ -47,7 +48,7 @@ export class ShoppingCartComponent implements OnInit {
 
   setDeliveryValue(deli:IDelivery){
     this.CartService.getShippingValue(deli)
-    this.getdeliveryValue()
+    this.getdeliveryValue() 
   }
 
   getDeliveries(){

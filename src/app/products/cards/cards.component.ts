@@ -1,5 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { Observable } from 'rxjs';
+import { IPhoto } from 'src/app/Models/Photos';
 import { IProducts } from 'src/app/Models/Products';
 import { IShoppingCart } from 'src/app/Models/ShoppingCart';
 import { ShoppingCartService } from 'src/app/_services/shopping-cart.service';
@@ -11,6 +12,7 @@ import { ShoppingCartService } from 'src/app/_services/shopping-cart.service';
 })
 export class CardsComponent implements OnInit {
   @Input() product:IProducts
+ 
 
   constructor() { }
 

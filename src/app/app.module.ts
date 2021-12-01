@@ -25,8 +25,8 @@ import { ServerErrorComponent } from './server-error/server-error.component';
 import { NotfoundComponent } from './notfound/notfound.component';
 import { AuthInterceptorProvider } from './Interceptor/jwt.interceptor';
 import { ErrorInterceptorProvider } from './Interceptor/error.interceptor';
-
-
+import { FlexLayoutModule } from '@angular/flex-layout';
+import { MatSidenavModule } from '@angular/material/sidenav';
 
 @NgModule({
   declarations: [
@@ -57,7 +57,9 @@ import { ErrorInterceptorProvider } from './Interceptor/error.interceptor';
     ReactiveFormsModule,
     PaginationModule,
     NgbModule,
-    Ng2SearchPipeModule
+    Ng2SearchPipeModule,
+    FlexLayoutModule,
+    MatSidenavModule,
   ],
   providers: [
     AuthInterceptorProvider,

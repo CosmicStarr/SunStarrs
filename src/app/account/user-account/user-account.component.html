@@ -1,0 +1,39 @@
+
+
+
+
+
+
+
+<div class="mt-5">
+    productName: string;
+imageUrl: string;
+price: number;
+amount: number;
+
+actualOrderId: number;
+email: string;
+orderDate: Date;
+shippingAddress: IAddress;
+speaiclDelivery: string;
+subtotal: number;
+total: number;
+orderedItems: OrderedItem[];
+status: string;
+paymentId: string;
+
+<div *ngFor="let item of orders" >
+    <p>{{item?.actualOrderId}}</p>
+    <p>{{item.email}}</p>
+    <p>{{item.orderDate | date:'short'}} </p>
+     <div *ngFor="let items of item.orderedItems">
+        <p>{{items?.productName}}</p>
+        <p>{{items?.imageUrl}}</p>
+        <p>{{items?.price|currency}}</p> 
+        <p>{{items?.amount}}</p> 
+        </div>
+    </div>
+</div>
+
+
+

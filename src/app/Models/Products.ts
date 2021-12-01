@@ -1,6 +1,4 @@
-import { IBrand } from "./Brand";
-import { ICategory } from "./Category";
-import { IPhoto } from "./Photos";
+
 
 export interface IProducts {
     productsId: number;
@@ -11,5 +9,5 @@ export interface IProducts {
     isAvailable: boolean;
     categoryDTO?:string;
     brandDTO?:string;
-    photosDTO?: IPhoto[]
+    photosDTO?:string
 }
